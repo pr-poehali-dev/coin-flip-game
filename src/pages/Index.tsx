@@ -206,8 +206,8 @@ export default function Index() {
                 }`}
               >
                 <div className="text-center">
-                  <div className="text-2xl">👑</div>
-                  <div className="text-xs">Орёл</div>
+                  <img src="https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/05a3e951-9cc3-43c2-8356-d7b00551ed35.png" alt="TON" className="w-8 h-8 mx-auto mb-1" />
+                  <div className="text-xs">TON</div>
                 </div>
               </Button>
               <Button
@@ -221,8 +221,8 @@ export default function Index() {
                 }`}
               >
                 <div className="text-center">
-                  <div className="text-2xl">⚡</div>
-                  <div className="text-xs">Решка</div>
+                  <img src="https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/ea15872f-2a3b-4989-a7ad-3c42484f8099.png" alt="USDT" className="w-8 h-8 mx-auto mb-1" />
+                  <div className="text-xs">USDT</div>
                 </div>
               </Button>
             </div>
@@ -240,22 +240,25 @@ export default function Index() {
         <Card className="bg-gray-900/50 border-yellow-500/20 p-4 backdrop-blur-sm">
           <div className="relative flex items-center justify-center py-4">
             <div
-              className={`w-32 h-32 rounded-full flex items-center justify-center text-5xl ${
+              className={`w-32 h-32 rounded-full flex items-center justify-center overflow-hidden ${
                 isFlipping ? 'animate-spin-flip' : ''
               } ${
                 result === 'heads'
-                  ? 'bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-xl shadow-yellow-500/50'
+                  ? 'shadow-xl shadow-blue-500/50'
                   : result === 'tails'
-                  ? 'bg-gradient-to-br from-gray-300 to-gray-500 shadow-xl shadow-gray-400/50'
-                  : 'bg-gradient-to-br from-yellow-400 to-gray-400'
+                  ? 'shadow-xl shadow-green-500/50'
+                  : 'shadow-xl shadow-yellow-500/30'
               }`}
+              style={{
+                background: result === null ? 'linear-gradient(135deg, #0088cc 0%, #26a17b 100%)' : 'transparent'
+              }}
             >
               {isFlipping ? (
                 <Icon name="Sparkles" size={48} className="text-white animate-pulse" />
               ) : result === 'heads' ? (
-                <span>👑</span>
+                <img src="https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/05a3e951-9cc3-43c2-8356-d7b00551ed35.png" alt="TON" className="w-full h-full object-cover" />
               ) : result === 'tails' ? (
-                <span>⚡</span>
+                <img src="https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/ea15872f-2a3b-4989-a7ad-3c42484f8099.png" alt="USDT" className="w-full h-full object-cover" />
               ) : (
                 <Icon name="Coins" size={48} className="text-white/80" />
               )}
@@ -293,9 +296,9 @@ export default function Index() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1">
-                      <span className="text-lg">{game.bet === 'heads' ? '👑' : '⚡'}</span>
+                      <img src={game.bet === 'heads' ? 'https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/05a3e951-9cc3-43c2-8356-d7b00551ed35.png' : 'https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/ea15872f-2a3b-4989-a7ad-3c42484f8099.png'} alt="bet" className="w-5 h-5" />
                       <Icon name="ArrowRight" size={12} className="text-gray-500" />
-                      <span className="text-lg">{game.result === 'heads' ? '👑' : '⚡'}</span>
+                      <img src={game.result === 'heads' ? 'https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/05a3e951-9cc3-43c2-8356-d7b00551ed35.png' : 'https://cdn.poehali.dev/projects/0df980a9-a9d7-486c-aa96-a22a215bcd31/bucket/ea15872f-2a3b-4989-a7ad-3c42484f8099.png'} alt="result" className="w-5 h-5" />
                     </div>
                     <div className={`font-bold ${game.won ? 'text-green-400' : 'text-red-400'}`}>
                       {game.won ? `+${game.amount * 2}` : `-${game.amount}`}
