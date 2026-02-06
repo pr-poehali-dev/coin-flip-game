@@ -28,8 +28,19 @@ export default function Index() {
     const savedBalance = localStorage.getItem('coinflip_balance');
     const savedHistory = localStorage.getItem('coinflip_history');
     const savedTgId = localStorage.getItem('coinflip_tg_id');
+    const welcomeBonus = localStorage.getItem('coinflip_welcome_bonus');
     
-    if (savedBalance) setBalance(Number(savedBalance));
+    if (savedBalance) {
+      setBalance(Number(savedBalance));
+    } else if (!welcomeBonus) {
+      setBalance(100);
+      localStorage.setItem('coinflip_welcome_bonus', 'true');
+      toast({
+        title: '🎁 Приветственный бонус!',
+        description: '+100 монет для начала игры',
+      });
+    }
+    
     if (savedHistory) setHistory(JSON.parse(savedHistory));
     if (savedTgId) setTelegramId(savedTgId);
   }, []);
